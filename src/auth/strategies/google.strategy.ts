@@ -6,9 +6,9 @@ import { Strategy } from 'passport-google-oauth20';
 export class GoogleStrategy extends PassportStrategy(Strategy, 'google') {
   constructor() {
     super({
-      clientId: '',
-      clientSecret: '',
-      callbackURL: '',
+      clientId: '364190431614-c9mbienlmeilf9nr9r8mck6h72bv5nl8.apps.googleusercontent.com',
+      clientSecret: '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',
+      callbackURL: 'https://api.aptoclick.com/auth/google/redirect',
       scope: ['email', 'profile'],
     });
   }
