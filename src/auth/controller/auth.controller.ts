@@ -14,7 +14,7 @@ export class AuthController {
 
   @Get('redirect')
   @UseGuards(AuthGuard('google'))
-  @Redirect()
+  @Redirect('http://localhost:3000', 302)
   googleAuthRedirect(@Req() req) {
     // return this.appService.googleLogin(req);
     return { url: 'http://localhost:3000' };
