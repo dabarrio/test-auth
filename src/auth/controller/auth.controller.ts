@@ -24,8 +24,8 @@ export class AuthController {
   @Redirect('http://127.0.0.1:3000/', 302)
   googleAuthRedirect(@Req() req, @Response() res) {
     // return this.appService.googleLogin(req);
-    res.send({ JWT: 'holitas' });
-    return { url: 'http://127.0.0.1:3000/' };
+    res.headers({ JWT: 'holitas' }).redirect({url: 'http://127.0.0.1:3000/'});
+    return { url: 'http://127.0.0.1:3000/'};
     // return ;
   }
 }
