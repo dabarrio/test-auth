@@ -1,4 +1,4 @@
-import { Controller, Get, Redirect, Req, UseGuards } from '@nestjs/common';
+import { Controller, Get, Redirect, Req, UseGuards, Response } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { AuthService } from '../services/auth.service';
 
@@ -15,8 +15,9 @@ export class AuthController {
   @Get('redirect')
   @UseGuards(AuthGuard('google'))
   @Redirect('http://localhost:3000', 302)
-  googleAuthRedirect(@Req() req) {
+  googleAuthRedirect(@Req() req, @Response() res) {
     // return this.appService.googleLogin(req);
-    return { url: 'http://localhost:3000' };
+    return res.send({JWT: 'holitas'}).json({ url: 'http://localhost:3000' })
+    // return ;
   }
 }
