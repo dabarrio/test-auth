@@ -22,12 +22,12 @@ export class AuthController {
 
   @Get('redirect')
   @UseGuards(AuthGuard('google'))
-  // @Redirect('http://127.0.0.1:3000/', 302)
+  @Redirect('http://127.0.0.1:3000/', 302)
   @Header('CONTROL', 'VALUE')
   googleAuthRedirect(@Req() req) {
     // return this.appService.googleLogin(req);
     // res.headers({ JWT: 'holitas' }).redirect({url: 'http://127.0.0.1:3000/'});
-    return { url: 'http://127.0.0.1:3000/' };
-    // return ;
+    // return { url: 'http://127.0.0.1:3000/' };
+    return;
   }
 }
