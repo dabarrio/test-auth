@@ -5,6 +5,7 @@ import {
   Req,
   UseGuards,
   Response,
+  Header,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { AuthService } from '../services/auth.service';
@@ -21,11 +22,12 @@ export class AuthController {
 
   @Get('redirect')
   @UseGuards(AuthGuard('google'))
-  @Redirect('http://127.0.0.1:3000/', 302)
+  // @Redirect('http://127.0.0.1:3000/', 302)
+  @Header('CONTROL', 'VALUE')
   googleAuthRedirect(@Req() req, @Response() res) {
     // return this.appService.googleLogin(req);
-    res.headers({ JWT: 'holitas' }).redirect({url: 'http://127.0.0.1:3000/'});
-    return { url: 'http://127.0.0.1:3000/'};
+    // res.headers({ JWT: 'holitas' }).redirect({url: 'http://127.0.0.1:3000/'});
+    return { url: 'http://127.0.0.1:3000/' };
     // return ;
   }
 }
