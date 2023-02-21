@@ -6,6 +6,7 @@ import {
   UseGuards,
   Response,
   Header,
+  Res,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { AuthService } from '../services/auth.service';
@@ -22,12 +23,11 @@ export class AuthController {
 
   @Get('redirect')
   @UseGuards(AuthGuard('google'))
-  @Redirect('http://localhost:3000/', 302)
-  @Header('CONTROL', 'VALUE')
-  googleAuthRedirect(@Req() req) {
-    // return this.appService.googleLogin(req);
-    // res.headers({ JWT: 'holitas' }).redirect({url: 'http://127.0.0.1:3000/'});
-    return { url: 'http://localhost:3000/' };
-    return;
+  async googleLoginCallback(@Req() req, @Res() res) {
+    // Aquí es donde puedes agregar los encabezados de respuesta que necesites
+    res.header('Mi-Encabezado', 'Valor-Encabezado');
+
+    // Redireccionar a la página deseada después de autenticar al usuario
+    res.redirect('http://localhost:3000');
   }
 }
